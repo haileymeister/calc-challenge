@@ -1,6 +1,4 @@
 'use strict';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 let equationState = {
       pastEquations: [],
@@ -13,8 +11,7 @@ let equation = '';
 // Button Handling
 form.addEventListener('submit', function(event){
     event.preventDefault();
-    console.log('button pressed');
-    console.log(addTo())
+    addTo();
     showValues();
     resetForm();
 });
@@ -22,7 +19,6 @@ form.addEventListener('submit', function(event){
 form.addEventListener('input', function(event){
   event.preventDefault();
   equation = updateValue(event.target.value);
-  console.log("equation; " + equation)
 });
 
 function updateValue(value) {
@@ -33,7 +29,6 @@ function updateValue(value) {
 
 function result() {
   let result = eval(equation);
-  console.log("in result");
   return result;
 }
 
@@ -60,12 +55,12 @@ function displayValues() {
   let equations = equationState.pastEquations.reverse();
   if (equations.length > 10) {
     for (let i = 0; i < 10; i++){
-      formatted += " " + equations[i] + '\n';
+      formatted += " " + equations[i] + '<br>';
     }
   } else {
       for (let i = 0; i < equations.length; i++){
-        formatted += " " + equations[i] + '\n';
+        formatted += " " + equations[i] + '<br>';
       }
   }
-  previous.textContent = formatted
+  previous.innerHTML = formatted;
 }
